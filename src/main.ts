@@ -3,7 +3,7 @@ import { AppModule } from './app.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  await app.listen(3002);
+  await app.listen(process.env.PORT || 3002);
 }
 bootstrap();
 // mongodb://abidh:abid1080@<hostname>/?ssl=true&replicaSet=atlas-7mqem7-shard-0&authSource=admin&retryWrites=true&w=majority
