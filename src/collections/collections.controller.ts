@@ -1,4 +1,4 @@
-import { Res, Controller, UploadedFile, Get, Post, Body, Patch, Param, Delete, UseInterceptors } from '@nestjs/common';
+import { Res, Controller, UploadedFile, Get, Post, Body, Patch, Param, Delete, UseInterceptors, Query, ParseIntPipe } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
 import { CollectionsService } from './collections.service';
@@ -42,19 +42,36 @@ export class CollectionsController {
   findAll() {
     return this.collectionsService.findAll();
   }
+  @Get('/categories')
+  getCategories() {
+    return this.collectionsService.getCategories();
+  }
 
-  @Get(':id')
+  @Get('/item/:id')
   findOne(@Param('id') id: string) {
-    return this.collectionsService.findOne(+id);
+    console.log(id)
+    return this.collectionsService.findOne(id);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateCollectionDto: UpdateCollectionDto) {
-    return this.collectionsService.update(+id, updateCollectionDto);
+  @Get('/category/:id')
+  find(
+    @Param('id') id: string,
+    @Query('page', ParseIntPipe) page: number,
+    @Query('limit', ParseIntPipe) limit: number,
+
+  ) {
+    return this.collectionsService.find(+id, page, limit);
   }
+
+
+
+  // @Patch(':id')
+  // update(@Param('id') id: string, @Body() updateCollectionDto: UpdateCollectionDto) {
+  //   return this.collectionsService.update(+id, updateCollectionDto);
+  // }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.collectionsService.remove(+id);
+    return this.collectionsService.remove(id);
   }
 }
