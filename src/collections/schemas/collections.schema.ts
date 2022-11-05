@@ -8,11 +8,14 @@ export class Collections {
     @Prop()
     title: string;
 
-    @Prop({ type: String, required: true, unique: true })
+    @Prop({ type: String})
     slug: string;
 
     @Prop()
     image: string;
+
+    @Prop()
+    imageName:string;
 
     @Prop()
     niftysky_category: string;
@@ -37,13 +40,18 @@ export class Collections {
 
     @Prop()
     createdAt: Date;
+    
     @Prop()
     updatedAt: Date;
 
     @Prop()
     createdBy: string;
+
     @Prop()
     updatedBy: string;
+
+    @Prop()
+    isActive:boolean;
 
 }
 
