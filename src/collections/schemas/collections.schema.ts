@@ -8,7 +8,7 @@ export class Collections {
     @Prop()
     title: string;
 
-    @Prop({ type: String, required: true, unique: true })
+    @Prop({ type: String })
     slug: string;
 
     @Prop()
@@ -44,6 +44,16 @@ export class Collections {
     createdBy: string;
     @Prop()
     updatedBy: string;
+
+    @Prop()
+    isActive: boolean;
+
+    @Prop()
+    owner: string;
+
+    @Prop()
+    ipfs: string;
+
 
 }
 
