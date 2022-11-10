@@ -5,7 +5,9 @@ import { NestExpressApplication } from "@nestjs/platform-express"
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
   app.useStaticAssets(join(__dirname, '..', '/files'))
-  await app.listen(process.env.PORT || 3002);
+  //await app.listen(process.env.PORT || 3002);
+  await app.listen(3002, "0.0.0.0");
+
 }
 bootstrap();
 // mongodb://abidh:abid1080@<hostname>/?ssl=true&replicaSet=atlas-7mqem7-shard-0&authSource=admin&retryWrites=true&w=majority
