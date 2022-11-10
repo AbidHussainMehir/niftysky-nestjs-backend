@@ -8,7 +8,7 @@ export class Collections {
     @Prop()
     title: string;
 
-    @Prop({ type: String})
+    @Prop()
     slug: string;
 
     @Prop()
@@ -27,7 +27,7 @@ export class Collections {
     description: string;
 
     @Prop()
-    wikidescription: string;
+    wikidescription: string|null;
 
     @Prop()
     wikipedia: string;
@@ -51,7 +51,14 @@ export class Collections {
     updatedBy: string;
 
     @Prop()
-    isActive:boolean;
+    isActive: boolean;
+
+    @Prop()
+    owner: string;
+
+    @Prop()
+    ipfs: string;
+
 
 }
 
