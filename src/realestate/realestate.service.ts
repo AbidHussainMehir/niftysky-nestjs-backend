@@ -19,7 +19,22 @@ export class RealEstateService {
     return this.collectionModel.find().exec();
   }
 
-  async find(id: string): Promise<RealEstate[]> {
+  async find(id: string, page: number, limit: number): Promise<any> {
+    let skip = (page - 1) * limit;
+    let count = await this.collectionModel.find({
+      category: id
+    }).count().exec();
+    let res = await this.collectionModel.find({
+      category: id
+    })
+      .sort({ _id: 1 })
+      .skip(skip)
+      .limit(limit)
+      .exec();
+    return { data: res, current:skip+limit,range: `${skip + 1}-${skip + limit}`, total_records: count }
+  
+   
+   
     return this.collectionModel.find({
       category: id
     }).exec();

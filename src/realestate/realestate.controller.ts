@@ -1,4 +1,4 @@
-import { Res, Controller, UploadedFile, Get, Post, Body, Patch, Param, Delete, UseInterceptors } from '@nestjs/common';
+import { Res,Query, Controller, UploadedFile,ParseIntPipe, Get, Post, Body, Patch, Param, Delete, UseInterceptors } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
 import { RealEstateService } from './realestate.service';
@@ -46,9 +46,12 @@ export class RealEstateController {
   getCategories() {
     return this.RealEstateService.getCategories();
   }
-  @Get('/categor/:id')
-  find(@Param('id') id: string) {
-    return this.RealEstateService.find(id);
+  @Get('/category/:id')
+  find(@Param('id') id: string,
+  @Query('page', ParseIntPipe) page: number,
+  @Query('limit', ParseIntPipe) limit: number,
+  ) {
+    return this.RealEstateService.find(id,page,limit);
   }
   @Get('/item/:id')
   findOne(@Param('id') id: string) {

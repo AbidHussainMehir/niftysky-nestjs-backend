@@ -21,8 +21,7 @@ export class CollectionsService {
 
   async find(id: number, page: number, limit: number): Promise<Collections[] | any> {
     try {
-      console.log("error",id)
-
+     
       let skip = (page - 1) * limit;
       let count = await this.collectionModel.find({
         niftysky_category_id: id
