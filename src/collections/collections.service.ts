@@ -54,6 +54,17 @@ export class CollectionsService {
     }
 
   }
+  async findOneBySlug(id: string): Promise<Collections | any> {
+    try {
+      return this.collectionModel.find({
+        slug: id
+      }).exec();
+    } catch (error) {
+      return { message: "Something went wrong!" }
+    }
+
+  }
+
   async itemCount(id: string): Promise<Collections | any> {
     try {
       return this.collectionModel.find({

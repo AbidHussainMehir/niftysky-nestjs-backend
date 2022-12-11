@@ -43,10 +43,12 @@ export class CollectionsController {
   getCategories() {
     return this.collectionsService.getCategories();
   }
-
+  @Get('/item-by-slug/:id')
+  findOneBySlug(@Param('id') id: string) {
+    return this.collectionsService.findOneBySlug(id);
+  }
   @Get('/item/:id')
   findOne(@Param('id') id: string) {
-    console.log(id)
     return this.collectionsService.findOne(id);
   }
 

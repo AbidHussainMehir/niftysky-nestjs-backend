@@ -48,7 +48,7 @@ export class RealEstateController {
   }
   @Get('/categor/:id')
   find(@Param('id') id: string) {
-    return this.RealEstateService.find(+id);
+    return this.RealEstateService.find(id);
   }
   @Get('/item/:id')
   findOne(@Param('id') id: string) {

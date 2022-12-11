@@ -19,9 +19,9 @@ export class RealEstateService {
     return this.collectionModel.find().exec();
   }
 
-  async find(id: number): Promise<RealEstate[]> {
+  async find(id: string): Promise<RealEstate[]> {
     return this.collectionModel.find({
-      niftysky_category_id: id
+      category: id
     }).exec();
   }
   async findOne(id: string): Promise<RealEstate | any> {
